@@ -188,6 +188,6 @@ int main(void){
                 printf("Opcao invalida!\n");
         }
     }while(opcao != -1);
-    liberaLista(lista);
+    freeElementoDaLista(lista);
     return 0;
 }
