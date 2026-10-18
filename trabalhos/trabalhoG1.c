@@ -161,12 +161,14 @@ int main(void){
 
         switch(opcao){
             case 1:
-                printf("Informe a categoria (A, B ou G): ");
-                scanf(" %c", &categoria);
-                senha = insereNaLista(lista, categoria);
-                printf("Torcedor %d-%c inserido!\n", senha, categoria);
-                exibeLista(lista);
-                break;
+                printf("Digite sua categoria(A , B ou G): \n");
+                scanf(" %c",&categoria);
+                while (categoria!= 65 && categoria!= 66 && categoria != 71) {
+                        printf("Categoria invalida, tente novamente\n");
+                        printf("Digite sua categoria(Letra Maiuscula): \n");
+                        scanf(" %c", &categoria);
+                         }
+                 break;
             case 2:
                 printf("Informe a senha do torcedor a remover: ");
                 scanf("%d", &senha);
