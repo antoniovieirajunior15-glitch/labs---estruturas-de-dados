@@ -114,7 +114,7 @@ int RemoveDaLista(ListaTP* Lista, int senha) {
 
 	return 1;
 }
-
+//C) e D)
 void exibeLista(ListaTP* Lista) {
     if (Lista == NULL) {
         return;
@@ -130,24 +130,22 @@ void exibeLista(ListaTP* Lista) {
     }
 }
 
-void liberaLista(ListaTP* Lista) {
-    if (Lista == NULL) {
-        return;
-    }
+void freeElementoDaLista(ListaTP *Lista) {
+	Torcedor* Atual = Lista->primeiroDaFila;
+	Torcedor* Ant = NULL;
 
-    Torcedor* atual = Lista->primeiroDaFila;
-    while (atual != NULL) {
-        Torcedor* temp = atual->prox;
-        free(atual);
-        atual = temp;
-    }
-
-    free(Lista);
+	while (Atual != NULL) {
+		Ant = Atual;
+		Atual = Atual->prox;
+		free(Ant);
+	}
+	free(Lista);
+	return;
 }
 
 int main(void){
     ListaTP* lista = criaLista();
-    printf("ola torcedor/n");
+    printf("ola torcedor\n");
     int opcao;
     char categoria;
     int senha;
