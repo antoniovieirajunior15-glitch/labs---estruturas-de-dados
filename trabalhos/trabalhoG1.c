@@ -86,7 +86,7 @@ int insereNaLista(ListaTP* Lista, char categoria) {
 int RemoveDaLista(ListaTP* Lista, int senha) {
 	Torcedor* torcedorAtual = Lista->primeiroDaFila;
 	Torcedor* torcedorAnt = NULL;
-    
+
 	while (torcedorAtual != NULL && torcedorAtual->numFila != senha) {
 		torcedorAnt = torcedorAtual;
 		torcedorAtual = torcedorAtual->prox;
