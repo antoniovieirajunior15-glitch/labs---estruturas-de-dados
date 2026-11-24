@@ -31,17 +31,34 @@ int contem(Set* A, Set* B) {
     int i;
     int menor = (A->n < B->n) ? A->n : B->n;
 
-    /* parte em que os dois vetores têm bytes */
     for (i = 0; i < menor; i++) {
         if ((A->v[i] & B->v[i]) != B->v[i])
             return 0;
     }
 
-    /* se B é maior, os bytes restantes de B devem ser 0 */
     for (i = menor; i < B->n; i++) {
         if (B->v[i] != 0)
             return 0;
     }
 
     return 1;
+}
+
+int main(void) {
+    unsigned char va[] = {0xFF, 0x0F};
+    unsigned char vb[] = {0x0F, 0x03, 0x00};
+    unsigned char vc[] = {0x0F, 0x03, 0x01};
+
+    Set A = {2, va};
+    Set B = {3, vb};
+    Set C = {3, vc};
+
+    printf("A contem B? %d\n", contem(&A, &B));
+    printf("A contem C? %d\n", contem(&A, &C));
+
+    BitVector* comp = bvCompl(&A);
+    printf("compl: %02X %02X\n", comp->v[0], comp->v[1]);
+    free(comp->v);
+    free(comp);
+    return 0;
 }
